@@ -6,32 +6,33 @@ export const useTicTacToe = () => {
   const [winner, setWinner] = useState(null);
   const [scores, setScores] = useState({ X: 0, O: 0 });
 
-  const handleClick = (index) => {
+  const handleClick = async (index) => {
     if (calculateWinner(squares) || squares[index]) {
       return;
     }
     const newSquares = squares.slice(); // Create a copy of the squares array
     newSquares[index] = "X"; // Player's move
-  
+
     setSquares(newSquares); // Update the state with the player's move
     setXIsNext(false); // Switch turns to computer (O)
-    
+
     const winner = calculateWinner(newSquares);
     if (winner) {
       setWinner(winner);
       setScores({ ...scores, [winner]: scores[winner] + 1 });
     } else {
-      // Make a random move for the computer (O)
+      // Make a random move for the computer (O) after a delay
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjust the delay time as needed
       const emptySquares = newSquares.reduce((acc, val, idx) => {
         if (val === null) acc.push(idx);
         return acc;
       }, []);
       const randomIndex = Math.floor(Math.random() * emptySquares.length);
       newSquares[emptySquares[randomIndex]] = "O";
-      
+
       setSquares(newSquares); // Update the state with the computer's move
       setXIsNext(true); // Switch turns back to player (X)
-      
+
       const computerWinner = calculateWinner(newSquares);
       if (computerWinner) {
         setWinner(computerWinner);

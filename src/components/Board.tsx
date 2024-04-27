@@ -5,16 +5,8 @@ import Square from "./Square";
 
 const Board = () => {
     const { squares, handleClick, winner, scores, handleRestart } = useTicTacToe();
-    // const [status, setStatus] = useState("Current player: X")
     const [current, setCurrent] = useState("Current player: ")
-//   let status;
-//     if (winner) {
-//       status = "Winner: " + winner;
-//     } else if (squares.every((square) => square !== null)) {  
-//       status = "It's a draw!";
-//     } else {
-//          status = (squares.filter((square) => square !== null).length % 2 === 0 ? "X" : "O");
-//     }
+
     useEffect(() => {
         if (winner) {
             setCurrent("Winner: " + winner); // Set current to display the winner
@@ -23,7 +15,7 @@ const Board = () => {
         } else {
             setCurrent((squares.filter((square) => square !== null).length % 2 === 0 ? "Current player: X" : "Current player: O")); // Set current to indicate the next player
         }
-    }, [squares, winner]);
+    }, [squares, winner, current]);
     
 
   
