@@ -1,6 +1,7 @@
 # Tic Tac Toe Game
 
 This is a simple implementation of the classic Tic Tac Toe game built using React.
+![Screenshot 2024-04-27 120522](https://github.com/IMRANDIL/Tic_Toc_Toe_React_JS/assets/71559091/bb42c2a8-90f7-47c3-bf14-c43b5aa81f7b)
 
 ## Table of Contents
 
