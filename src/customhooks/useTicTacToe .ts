@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import winSound from "../assets/win.mp3";
-import tieSound from "../assets/tie.mp4";
+import tieSound from "../assets/tieone.mp3";
 
 export const useTicTacToe = () => {
   const [squares, setSquares] = useState(Array(9).fill(null)); // Array to hold square values
@@ -48,7 +48,7 @@ export const useTicTacToe = () => {
       setScores({ ...scores, [winner]: scores[winner] + 1 });
     } else {
       // Make a random move for the computer (O) after a delay
-      await new Promise((resolve) => setTimeout(resolve, 700)); // Adjust the delay time as needed
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjust the delay time as needed
       const emptySquares = newSquares.reduce((acc, val, idx) => {
         if (val === null) acc.push(idx);
         return acc;
