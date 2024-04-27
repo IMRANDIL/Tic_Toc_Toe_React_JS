@@ -7,18 +7,18 @@ import Square from './components/Square';
 function App() {
   const [squares, setSquares] = useState(Array(9).fill(null)); // Array to hold square values
 
-  const handleClick = () => {
-    const newSquares = squares.slice(); // Copy the array
-    // newSquares[index] = 'X'; // Set value to 'X' for simplicity (you can change this logic)
-    setSquares(newSquares); // Update state
+  const handleClick = (index) => {
+    const newSquares = squares.slice(); // Create a copy of the squares array
+    newSquares[index] = 'X'; // Set the value at the clicked index to 'X'
+    setSquares(newSquares); // Update the state with the new squares array
   };
-console.log(squares)
+
   return (
     <div className='container'>
       <h1>Tic Tac Toe</h1>
       <Board>
         {squares.map((value, index) => (
-          <Square key={index} onClick={() => handleClick()} />
+          <Square key={index} value={value} onClick={() => handleClick(index)} />
         ))}
       </Board>
     </div>
