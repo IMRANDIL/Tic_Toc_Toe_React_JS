@@ -21,7 +21,7 @@ const Board = () => {
         } else if (squares.every((square) => square !== null)) {
             setCurrent("It's a draw!"); // Set current to indicate a draw
         } else {
-            setCurrent((squares.filter((square) => square !== null).length % 2 === 0 ? "Next player: X" : "Next player: O")); // Set current to indicate the next player
+            setCurrent((squares.filter((square) => square !== null).length % 2 === 0 ? "Current player: X" : "Current player: O")); // Set current to indicate the next player
         }
     }, [squares, winner]);
     
