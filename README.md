@@ -1,29 +1,40 @@
-# Tic Tac Toe Game
-
-This is a simple implementation of the classic Tic Tac Toe game built using React.
-
-## Table of Contents
-
-- [Description](#description)
-- [Features](#features)
-- [Installation](#installation)
+# Tic-Tac-Toe Game
 
 ## Description
-
-Tic Tac Toe is a two-player game where players take turns marking spaces in a 3x3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game. If all spaces are filled and no player has achieved a winning pattern, the game ends in a draw.
-
-This project provides a simple web-based implementation of the Tic Tac Toe game.
+This is a simple Tic-Tac-Toe game built using React. The game allows two players to take turns marking spaces on a 3x3 grid or play against a computer-controlled opponent. The computer makes random moves after a delay, simulating a realistic gameplay experience.
 
 ## Features
+- **Two-player gameplay:** Play against another player locally.
+- **Computer player:** Play against a computer-controlled opponent (currently making random moves).
+- **Score tracking:** Keep track of wins for both players.
+- **Restart game:** Restart the game at any time.
+- **Disable squares during computer move:** Prevent players from clicking on squares while the computer is making its move.
 
-- Play Tic Tac Toe against another player.
-- See the current status of the game, including whose turn it is and who won the game.
-- Restart the game at any time.
-- Keep track of the score for each player.
+## How to Play
+1. Clone the repository or download the source code.
+2. Install the necessary dependencies using `npm install`.
+3. Start the development server using `npm start`.
+4. Open the game in your browser and enjoy playing Tic-Tac-Toe!
 
-## Installation
+## Gameplay Instructions
+- Click on any empty square to place your mark (X or O).
+- Players take turns marking squares until one player wins or all squares are filled.
+- To win, a player must get three of their marks in a row, either horizontally, vertically, or diagonally.
+- If all squares are filled without any player achieving a winning combination, the game ends in a draw.
 
-1. Clone the repository:
+## Technologies Used
+- **React:** Frontend library for building user interfaces.
+- **JavaScript:** Programming language used for game logic.
+- **HTML/CSS:** Markup and styling for the game interface.
 
-   ```bash
-   git clone https://github.com/IMRANDIL/Tic_Toc_Toe_React_JS.git
+## Future Improvements
+- Implement more intelligent computer player logic.
+- Add options for different difficulty levels.
+- Enhance the user interface with animations and visual effects.
+- Implement additional features such as player names and customizable settings.
+
+## Credits
+This Tic-Tac-Toe game is created by [Your Name].
+
+## License
+This project is licensed under the [MIT License](LICENSE).
