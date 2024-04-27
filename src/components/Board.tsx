@@ -1,33 +1,31 @@
 // import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTicTacToe } from "../customhooks/useTicTacToe ";
 import Square from "./Square";
 
 const Board = () => {
     const { squares, handleClick, winner, scores, handleRestart } = useTicTacToe();
     // const [status, setStatus] = useState("Current player: X")
-  let status;
-    if (winner) {
-        // setStatus("Winner: " + winner)
-      status = "Winner: " + winner;
-    } else if (squares.every((square) => square !== null)) {
-        // setStatus("It's a draw!")
-      status = "It's a draw!";
-    } else {
-         status = squares.some((square) => square !== null) ? "Next player: " : "Current player: " + (squares.filter((square) => square !== null).length % 2 === 0 ? "X" : "O");
-        // setStatus(statustoUpdate)
-    }
+    const [current, setCurrent] = useState("Current player: ")
+//   let status;
+//     if (winner) {
+//       status = "Winner: " + winner;
+//     } else if (squares.every((square) => square !== null)) {  
+//       status = "It's a draw!";
+//     } else {
+//          status = (squares.filter((square) => square !== null).length % 2 === 0 ? "X" : "O");
+//     }
+    useEffect(() => {
+        if (winner) {
+            setCurrent("Winner: " + winner); // Set current to display the winner
+        } else if (squares.every((square) => square !== null)) {
+            setCurrent("It's a draw!"); // Set current to indicate a draw
+        } else {
+            setCurrent((squares.filter((square) => square !== null).length % 2 === 0 ? "Next player: X" : "Next player: O")); // Set current to indicate the next player
+        }
+    }, [squares, winner]);
+    
 
-       // Update status whenever there's a change in the game state
-    //    useEffect(() => {
-    //     if (winner) {
-    //         setStatus("Winner: " + winner);
-    //     } else if (squares.every((square) => square !== null)) {
-    //         setStatus("It's a draw!");
-    //     } else {
-    //         let statusToUpdate = squares.some((square) => square !== null) ? "Next player: " : "Current player: " + (squares.filter((square) => square !== null).length % 2 === 0 ? "X" : "O");
-    //         setStatus(statusToUpdate);
-    //     }
-    // }, [squares, winner]);
   
     return (
       <>
@@ -37,7 +35,7 @@ const Board = () => {
             marginBottom: "10px",
           }}
         >
-          {status && status}
+          {current}
         </div>
         <div className="board">
           {squares.map((value, index) => (
