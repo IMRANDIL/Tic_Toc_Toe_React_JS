@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import winSound from "../assets/win.mp3";
 import tieSound from "../assets/tie.mp4";
 
@@ -8,15 +8,27 @@ export const useTicTacToe = () => {
   const [winner, setWinner] = useState(null);
   const [scores, setScores] = useState({ X: 0, O: 0 });
   const [disableSquares, setDisableSquares] = useState(false); // State to disable squares
+  const audioRef = useRef(null); // Reference to the audio element
 
+ 
   useEffect(() => {
     if (winner === "X" || winner === "O") {
-      const audio = new Audio(winSound);
-      audio.play();
+      audioRef.current = new Audio();
+      audioRef.current.src = winSound;
     } else if (winner === "draw") {
-      const audio = new Audio(tieSound);
-      audio.play();
+      audioRef.current = new Audio();
+      audioRef.current.src = tieSound;
     }
+
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.src = null;
+      }
+    };
   }, [winner]);
 
   const handleClick = async (index) => {
@@ -36,7 +48,7 @@ export const useTicTacToe = () => {
       setScores({ ...scores, [winner]: scores[winner] + 1 });
     } else {
       // Make a random move for the computer (O) after a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjust the delay time as needed
+      await new Promise((resolve) => setTimeout(resolve, 700)); // Adjust the delay time as needed
       const emptySquares = newSquares.reduce((acc, val, idx) => {
         if (val === null) acc.push(idx);
         return acc;
@@ -81,10 +93,14 @@ export const useTicTacToe = () => {
   };
 
   const handleRestart = () => {
+    if (audioRef.current) {
+      audioRef.current.src = null;
+    }
     setSquares(Array(9).fill(null));
     setXIsNext(true);
     setWinner(null);
     setDisableSquares(false);
+   
   };
 
   return { squares, handleClick, winner, scores, handleRestart, xIsNext };
