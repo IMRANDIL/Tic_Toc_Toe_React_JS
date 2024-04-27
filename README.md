@@ -7,9 +7,6 @@ This is a simple implementation of the classic Tic Tac Toe game built using Reac
 - [Description](#description)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Description
 
