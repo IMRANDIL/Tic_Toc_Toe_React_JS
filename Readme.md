@@ -1,5 +1,15 @@
 # Tic-Tac-Toe Game
 
+![Screenshot 2024-04-27 120522](https://github.com/IMRANDIL/Tic_Toc_Toe_React_JS/assets/71559091/0a1767d1-f64d-401f-b668-4481054e21de)
+
+
+
+
+
+https://github.com/IMRANDIL/Tic_Toc_Toe_React_JS/assets/71559091/d07bfbaa-dcb1-4fa9-b43e-c03c7a9690fd
+
+
+
 ## Description
 This is a simple Tic-Tac-Toe game built using React. The game allows two players to take turns marking spaces on a 3x3 grid or play against a computer-controlled opponent. The computer makes random moves after a delay, simulating a realistic gameplay experience.
 
