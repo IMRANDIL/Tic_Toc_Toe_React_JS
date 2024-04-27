@@ -33,3 +33,42 @@
   background-color: #ddd; /* Light gray on hover */
   cursor: pointer;
 }
+
+
+/* Button */
+.reset {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.reset:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+/* Scores */
+.scores {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  font-size: 16px;
+  background-color: #f0f0f0; /* Light grey */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.scores p {
+  margin: 0;
+}
+
+.scores p:first-child {
+  margin-right: 10px;
+}
