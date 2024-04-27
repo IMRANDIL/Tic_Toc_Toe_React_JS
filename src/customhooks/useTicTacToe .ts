@@ -5,15 +5,17 @@ export const useTicTacToe = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [winner, setWinner] = useState(null);
   const [scores, setScores] = useState({ X: 0, O: 0 });
+  const [disableSquares, setDisableSquares] = useState(false); // State to disable squares
 
   const handleClick = async (index) => {
-    if (calculateWinner(squares) || squares[index]) {
+    if (calculateWinner(squares) || squares[index] || disableSquares) {
       return;
     }
     const newSquares = squares.slice(); // Create a copy of the squares array
     newSquares[index] = "X"; // Player's move
 
     setSquares(newSquares); // Update the state with the player's move
+    setDisableSquares(true); // Disable squares while it's the computer's turn
     setXIsNext(false); // Switch turns to computer (O)
 
     const winner = calculateWinner(newSquares);
@@ -31,6 +33,7 @@ export const useTicTacToe = () => {
       newSquares[emptySquares[randomIndex]] = "O";
 
       setSquares(newSquares); // Update the state with the computer's move
+      setDisableSquares(false); // Re-enable squares for the player's turn
       setXIsNext(true); // Switch turns back to player (X)
 
       const computerWinner = calculateWinner(newSquares);
@@ -69,7 +72,8 @@ export const useTicTacToe = () => {
     setSquares(Array(9).fill(null));
     setXIsNext(true);
     setWinner(null);
+    setDisableSquares(false);
   };
 
-  return { squares, handleClick, winner, scores, handleRestart };
+  return { squares, handleClick, winner, scores, handleRestart, xIsNext };
 };

@@ -4,7 +4,7 @@ import { useTicTacToe } from "../customhooks/useTicTacToe ";
 import Square from "./Square";
 
 const Board = () => {
-    const { squares, handleClick, winner, scores, handleRestart } = useTicTacToe();
+    const { squares, handleClick, xIsNext, winner, scores, handleRestart } = useTicTacToe();
     const [current, setCurrent] = useState("Current player: ")
 
     useEffect(() => {
@@ -12,10 +12,12 @@ const Board = () => {
             setCurrent("Winner: " + winner); // Set current to display the winner
         } else if (squares.every((square) => square !== null)) {
             setCurrent("It's a draw!"); // Set current to indicate a draw
+        } else if (xIsNext){
+            setCurrent("Current player: X"); // Set current to indicate the next player
         } else {
-            setCurrent((squares.filter((square) => square !== null).length % 2 === 0 ? "Current player: X" : "Current player: O")); // Set current to indicate the next player
+            setCurrent("Current player: O"); // Set current to indicate the next player
         }
-    }, [squares, winner, current]);
+    }, [squares, winner, xIsNext]);
     
 
   
