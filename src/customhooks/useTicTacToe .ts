@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import winSound from "../assets/win.mp3";
+import tieSound from "../assets/tie.mp4";
 
 export const useTicTacToe = () => {
   const [squares, setSquares] = useState(Array(9).fill(null)); // Array to hold square values
@@ -6,6 +8,16 @@ export const useTicTacToe = () => {
   const [winner, setWinner] = useState(null);
   const [scores, setScores] = useState({ X: 0, O: 0 });
   const [disableSquares, setDisableSquares] = useState(false); // State to disable squares
+
+  useEffect(() => {
+    if (winner === "X" || winner === "O") {
+      const audio = new Audio(winSound);
+      audio.play();
+    } else if (winner === "draw") {
+      const audio = new Audio(tieSound);
+      audio.play();
+    }
+  }, [winner]);
 
   const handleClick = async (index) => {
     if (calculateWinner(squares) || squares[index] || disableSquares) {
