@@ -35,9 +35,17 @@ const Board = () => {
         }
         return null;
       };
+      const winner = calculateWinner(squares);
+      let status;
+      if (winner) {
+        status = "Winner: " + winner;
+      } else {
+        status = "Next player: " + (xIsNext ? "X" : "O");
+      }
     console.log(squares)
   return (
     <>
+    <div className="status">{status}</div>
     <div className='board'>
     {squares.map((value, index) => (
           <Square key={index} value={value} onClick={() => handleClick(index)} />
