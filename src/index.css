@@ -1,27 +1,34 @@
 
-.container{
-    width: 100%;
-    height: 90vh;
-    margin-top: 0px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-.board{
-    width: 500px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: black;
-    color: #000;
+.board {
+  width: 400px;
+  height: 400px; /* Adjusted height for a more square-like board */
+  display: grid; /* Using CSS Grid for better layout */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-rows: repeat(3, 1fr); /* 3 equal rows */
+  gap: 2px; /* Gap between squares */
+  background-color: black;
 }
-
 
 .square {
-    background-color: red;
-    color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* White squares */
+  color: #000;
+  font-size: 2rem; /* Adjust font size */
+}
+
+/* Add hover effect for better UI feedback */
+.square:hover {
+  background-color: #ddd; /* Light gray on hover */
+  cursor: pointer;
 }
