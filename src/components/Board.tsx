@@ -1,5 +1,5 @@
 // import { useEffect, useState } from "react";
-import { useEffect, useState } from "react";
+
 import { useTicTacToe } from "../customhooks/useTicTacToe ";
 import Square from "./Square";
 
