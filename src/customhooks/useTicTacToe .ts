@@ -10,12 +10,25 @@ export const useTicTacToe = () => {
   const [disableSquares, setDisableSquares] = useState(false); // State to disable squares
   const audioRef = useRef(null); // Reference to the audio element
 
+  const [current, setCurrent] = useState("Current player: ")
+
+    useEffect(() => {
+        if (winner) {
+            setCurrent("Winner: " + winner); // Set current to display the winner
+        } else if (squares.every((square) => square !== null)) {
+            setCurrent("It's a draw!"); // Set current to indicate a draw
+        } else if (xIsNext){
+            setCurrent("Current player: X"); // Set current to indicate the next player
+        } else {
+            setCurrent("Current player: O"); // Set current to indicate the next player
+        }
+    }, [squares, winner, xIsNext]);
  
   useEffect(() => {
     if (winner === "X" || winner === "O") {
       audioRef.current = new Audio();
       audioRef.current.src = winSound;
-    } else if (winner === "draw") {
+    } else if(current == `It's a draw!`) {
       audioRef.current = new Audio();
       audioRef.current.src = tieSound;
     }
@@ -29,7 +42,7 @@ export const useTicTacToe = () => {
         audioRef.current.src = null;
       }
     };
-  }, [winner]);
+  }, [winner, current]);
 
   const handleClick = async (index) => {
     if (calculateWinner(squares) || squares[index] || disableSquares) {
@@ -103,5 +116,5 @@ export const useTicTacToe = () => {
    
   };
 
-  return { squares, handleClick, winner, scores, handleRestart, xIsNext };
+  return { squares, handleClick, winner, scores, handleRestart, xIsNext, current };
 };
